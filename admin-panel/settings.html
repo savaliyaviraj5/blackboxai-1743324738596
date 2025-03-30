@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Sweet Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Include base template -->
+    <div id="base" data-file="base.html"></div>
+
+    <script>
+        // Load base template
+        fetch('base.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('base').outerHTML = html;
+                // Now inject settings content
+                document.getElementById('content').innerHTML = `
+                    <div class="container mx-auto">
+                        <h2 class="text-2xl font-bold mb-6 text-purple-700 flex items-center">
+                            <i class="fas fa-cog mr-2"></i> System Settings
+                        </h2>
+                        
+                        <!-- Settings Tabs -->
+                        <div class="bg-white rounded-lg shadow mb-6">
+                            <div class="border-b border-gray-200">
+                                <nav class="flex -mb-px">
+                                    <button class="w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-purple-500 text-purple-600">
+                                        General
+                                    </button>
+                                    <button class="w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                        Appearance
+                                    </button>
+                                    <button class="w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                        Notifications
+                                    </button>
+                                    <button class="w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                        Advanced
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- General Settings -->
+                        <div class="bg-white rounded-lg shadow p-6 mb-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">General Settings</h3>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Store Name</label>
+                                    <input type="text" value="Sweet Delights" class="w-full p-2 border rounded">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Store Logo</label>
+                                    <div class="mt-1 flex items-center">
+                                        <img src="https://images.pexels.com/photos/14000520/pexels-photo-14000520.jpeg?auto=compress&cs=tinysrgb&w=160" 
+                                             class="h-16 w-16 rounded-full object-cover">
+                                        <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50">
+                                            Change
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Store Description</label>
+                                    <textarea class="w-full p-2 border rounded" rows="3">Your one-stop shop for delicious sweets and candies</textarea>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
+                                    <input type="email" value="contact@sweetdelights.com" class="w-full p-2 border rounded">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Store Currency</label>
+                                    <select class="w-full p-2 border rounded">
+                                        <option>USD ($)</option>
+                                        <option>EUR (€)</option>
+                                        <option>GBP (£)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 flex justify-end">
+                                <button class="px-4 py-2 bg-purple-600 text-white rounded">Save Changes</button>
+                            </div>
+                        </div>
+
+                        <!-- System Status -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">System Status</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">System Version</span>
+                                        <span class="text-sm text-gray-500">v1.0.0</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Last Updated</span>
+                                        <span class="text-sm text-gray-500">Oct 15, 2023</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Database Size</span>
+                                        <span class="text-sm text-gray-500">24.5 MB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg shadow p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Maintenance Mode</h3>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-500">When enabled, only administrators can access the store.</p>
+                                    </div>
+                                    <button class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200">
+                                        <span class="sr-only">Enable maintenance mode</span>
+                                        <span class="inline-block h-4 w-4 transform rounded-full bg-white translate-x-1"></span>
+                                    </button>
+                                </div>
+                                <div class="mt-6">
+                                    <button class="px-4 py-2 bg-red-600 text-white rounded text-sm">Clear Cache</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+    </script>
+</body>
+</html>
